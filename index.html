@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cricket's Candy Creations, Staten Island</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--orange:#F15A29;--brown:#7B5C2E;--yellow:#FFD449;--amber:#F89921;--green:#83C55F;--pink:#EA78AF;--teal:#34BBA0;--white:#FFFFFF;--off-white:#FFFDF8}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Nunito',sans-serif;background:var(--off-white);color:var(--brown);overflow-x:hidden}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:1000;background:var(--white);border-bottom:3px solid var(--yellow);box-shadow:0 2px 12px rgba(57,44,19,0.08)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:70px}
+  .nav-logo img{height:44px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:6px;list-style:none}
+  .nav-links a{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:var(--brown);text-decoration:none;padding:6px 12px;border-radius:20px;transition:all 0.2s}
+  .nav-links a:hover{background:var(--yellow)}
+  .nav-cta{background:var(--orange)!important;color:var(--white)!important;border-radius:30px!important;padding:10px 20px!important}
+  .nav-cta:hover{background:var(--brown)!important}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;font-size:26px;color:var(--brown)}
+  .candy-stripe{height:12px;background:repeating-linear-gradient(90deg,var(--pink) 0,var(--pink) 40px,var(--orange) 40px,var(--orange) 80px,var(--yellow) 80px,var(--yellow) 120px,var(--green) 120px,var(--green) 160px,var(--teal) 160px,var(--teal) 200px)}
+
+  /* HERO */
+  .hero{min-height:92vh;display:flex;align-items:center;background:linear-gradient(135deg,#FFF8E7 0%,#FFF0F6 50%,#E8FAF7 100%);overflow:hidden}
+  .hero-content{max-width:1200px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+  .hero-badge{display:inline-block;background:var(--yellow);color:var(--brown);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;padding:8px 20px;border-radius:30px;margin-bottom:24px;border:2px solid var(--amber)}
+  .hero h1{font-family:'Abril Fatface',serif;font-size:clamp(48px,6vw,80px);line-height:1.05;margin-bottom:8px}
+  .hero h1 .l1{color:var(--orange)}.hero h1 .l2{color:var(--pink)}.hero h1 .l3{color:var(--green)}
+  .hero-sub{font-family:'Abril Fatface',serif;font-size:clamp(20px,2.5vw,30px);color:var(--teal);margin-bottom:20px}
+  .hero-desc{font-size:18px;line-height:1.7;opacity:0.85;margin-bottom:36px;max-width:480px}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+  .btn-primary{display:inline-block;background:var(--orange);color:var(--white);font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:1px;padding:16px 36px;border-radius:50px;text-decoration:none;border:3px solid var(--orange);transition:all 0.2s}
+  .btn-primary:hover{background:var(--brown);border-color:var(--brown);transform:translateY(-2px)}
+  .btn-secondary{display:inline-block;background:transparent;color:var(--orange);font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:1px;padding:16px 36px;border-radius:50px;text-decoration:none;border:3px solid var(--orange);transition:all 0.2s}
+  .btn-secondary:hover{background:var(--orange);color:var(--white);transform:translateY(-2px)}
+  .hero-img-wrap{animation:float 3s ease-in-out infinite}
+  .hero-img-wrap img{width:100%;border-radius:30px;display:block;border:5px solid var(--white);box-shadow:8px 8px 0 var(--pink),16px 16px 0 var(--yellow);object-fit:cover;max-height:520px}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* SHARED */
+  .section-inner{max-width:1200px;margin:0 auto;padding:80px 32px}
+  .section-tag{display:inline-block;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:2px;padding:6px 16px;border-radius:20px;margin-bottom:16px}
+  .tag-pink{background:var(--pink);color:var(--white)}.tag-teal{background:var(--teal);color:var(--white)}
+  .tag-yellow{background:var(--yellow);color:var(--brown)}.tag-green{background:var(--green);color:var(--white)}.tag-orange{background:var(--orange);color:var(--white)}
+  .section-title{font-family:'Abril Fatface',serif;font-size:clamp(32px,4vw,52px);line-height:1.1;margin-bottom:16px}
+  .section-desc{font-size:18px;line-height:1.7;opacity:0.8;max-width:620px;margin-bottom:48px}
+
+  /* ── CRAFTS: 7-card fixed grid desktop, scroll on mobile ── */
+  .crafts-section{background:var(--white)}
+
+  /* DESKTOP: static 7-column grid with sprinkle-burst hover */
+  .craft-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
+  .craft-card{border-radius:20px;overflow:hidden;border:3px solid var(--yellow);background:var(--white);position:relative;cursor:default;transition:transform 0.25s,box-shadow 0.25s}
+  .craft-card.seasonal{border-color:var(--pink);background:#FFF5FC}
+  .craft-card-img{width:100%;height:170px;object-fit:cover;display:block}
+  .craft-card-body{padding:12px 14px 16px}
+  .craft-card-body h3{font-family:'Abril Fatface',serif;font-size:14px;margin-bottom:4px;line-height:1.2}
+  .craft-card-body p{font-size:11px;line-height:1.5;opacity:0.72}
+  .seasonal-badge{display:inline-block;background:var(--pink);color:var(--white);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:20px;margin-bottom:5px}
+
+  /* Sprinkle burst on hover */
+  .craft-card .sprinkle{position:absolute;width:6px;height:6px;border-radius:50%;pointer-events:none;opacity:0;transition:none}
+  .craft-card:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 12px 28px rgba(241,90,41,0.18)}
+  .craft-card:hover .sprinkle{animation:burst 0.6s ease-out forwards}
+  @keyframes burst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:var(--tx,translate(20px,-20px)) scale(0)}}
+
+  /* MOBILE: horizontal scroll carousel */
+  .craft-carousel-mobile{display:none;overflow:hidden}
+  .craft-mobile-track{display:flex;gap:16px;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1)}
+  .craft-mobile-card{flex:0 0 72%;border-radius:20px;overflow:hidden;border:3px solid var(--yellow);background:var(--white)}
+  .craft-mobile-card.seasonal{border-color:var(--pink);background:#FFF5FC}
+  .craft-mobile-card img{width:100%;height:180px;object-fit:cover;display:block}
+  .craft-mobile-body{padding:14px 16px 18px}
+  .craft-mobile-body h3{font-family:'Abril Fatface',serif;font-size:17px;margin-bottom:5px}
+  .craft-mobile-body p{font-size:13px;line-height:1.5;opacity:0.75}
+  .mobile-carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:20px}
+  .m-carousel-btn{width:40px;height:40px;border-radius:50%;border:2px solid var(--yellow);background:var(--white);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;color:var(--brown)}
+  .m-carousel-btn:hover{background:var(--orange);border-color:var(--orange);color:var(--white)}
+  .m-carousel-dots{display:flex;gap:7px}
+  .m-dot{width:9px;height:9px;border-radius:50%;background:var(--yellow);border:none;cursor:pointer;padding:0;transition:background 0.2s,transform 0.2s}
+  .m-dot.active{background:var(--orange);transform:scale(1.3)}
+
+  /* ── COMBINED PARTIES & PACKAGES ── */
+  .parties-section{background:linear-gradient(180deg,var(--off-white) 0%,#FFF0F6 100%)}
+
+  /* Orange hero banner */
+  .party-highlight{background:var(--orange);color:var(--white);border-radius:32px;padding:52px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:40px;overflow:hidden;position:relative}
+  .party-highlight::after{content:'🎂';position:absolute;font-size:180px;right:-10px;bottom:-30px;opacity:0.08;line-height:1}
+  .party-highlight h3{font-family:'Abril Fatface',serif;font-size:clamp(24px,3.5vw,40px);color:var(--white);line-height:1.15;margin-bottom:14px}
+  .party-highlight p{font-size:17px;line-height:1.7;opacity:0.9;margin-bottom:24px}
+  .btn-white{display:inline-block;background:var(--white);color:var(--orange);font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:1px;padding:13px 30px;border-radius:40px;text-decoration:none;transition:all 0.2s}
+  .btn-white:hover{background:var(--yellow);color:var(--brown);transform:translateY(-2px)}
+  .party-highlight-img{border-radius:20px;width:100%;height:260px;object-fit:cover;border:4px solid rgba(255,255,255,0.3);display:block}
+
+  /* 3 category pills */
+  .party-types{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+  .party-type{border-radius:20px;padding:24px 22px;border:2px solid transparent;transition:transform 0.2s,box-shadow 0.2s}
+  .party-type:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(57,44,19,0.1)}
+  .party-type.birthday{background:#FFF5E7;border-color:var(--amber)}
+  .party-type.private{background:#FFF0F9;border-color:var(--pink)}
+  .party-type.corporate{background:#EDFAF7;border-color:var(--teal)}
+  .party-type-icon{font-size:36px;margin-bottom:10px;display:block}
+  .party-type h4{font-family:'Abril Fatface',serif;font-size:20px;margin-bottom:6px}
+  .party-type p{font-size:14px;line-height:1.6;opacity:0.8;margin-bottom:14px}
+  .party-type-features{list-style:none;margin-bottom:16px}
+  .party-type-features li{font-size:13px;font-weight:700;padding:3px 0 3px 18px;position:relative;opacity:0.85}
+  .party-type-features li::before{content:'✦';position:absolute;left:0;color:var(--orange);font-size:9px;top:6px}
+  .btn-card{display:inline-block;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;padding:10px 22px;border-radius:30px;text-decoration:none;border:2px solid;transition:all 0.2s}
+  .btn-orange{background:var(--orange);color:var(--white);border-color:var(--orange)}.btn-orange:hover{background:var(--brown);border-color:var(--brown)}
+  .btn-pink{background:var(--pink);color:var(--white);border-color:var(--pink)}.btn-pink:hover{background:#c9498e;border-color:#c9498e}
+  .btn-teal{background:var(--teal);color:var(--white);border-color:var(--teal)}.btn-teal:hover{background:#1e8a74;border-color:#1e8a74}
+
+  /* ── Package Carousel ── */
+  .pkg-carousel-wrap{margin-bottom:16px}
+  .pkg-intro{background:var(--teal);border-radius:20px;padding:24px 32px;margin-bottom:36px;text-align:center}
+  .pkg-intro p{color:var(--white);font-size:15px;line-height:1.7}
+  .pkg-intro em{color:var(--yellow);font-style:normal;font-weight:800}
+
+  /* Tab nav */
+  .pkg-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;justify-content:center}
+  .pkg-tab{background:var(--white);border:2px solid var(--yellow);border-radius:30px;padding:8px 18px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:all 0.2s;color:var(--brown)}
+  .pkg-tab:hover{background:var(--yellow)}
+  .pkg-tab.active{background:var(--orange);border-color:var(--orange);color:var(--white)}
+
+  /* Package slides */
+  .pkg-slides{position:relative}
+  .pkg-slide{display:none;grid-template-columns:1fr 1fr;gap:48px;align-items:start;animation:fadeIn 0.35s ease}
+  .pkg-slide.active{display:grid}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .pkg-img{border-radius:24px;width:100%;height:340px;object-fit:cover;display:block;box-shadow:6px 6px 0 var(--yellow)}
+  .pkg-tag{display:inline-block;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+  .pkg-tag.kids{background:var(--yellow);color:var(--brown)}
+  .pkg-tag.all{background:var(--pink);color:var(--white)}
+  .pkg-tag.adults{background:var(--teal);color:var(--white)}
+  .pkg-title{font-family:'Abril Fatface',serif;font-size:clamp(22px,2.5vw,32px);line-height:1.1;margin-bottom:6px;color:var(--brown)}
+  .pkg-price{font-size:16px;font-weight:900;color:var(--orange);margin-bottom:12px}
+  .pkg-desc{font-size:15px;line-height:1.7;opacity:0.8;margin-bottom:16px;font-style:italic}
+  .pkg-features{list-style:none;margin-bottom:20px}
+  .pkg-features li{font-size:14px;padding:4px 0 4px 20px;position:relative;border-bottom:1px solid rgba(57,44,19,0.06)}
+  .pkg-features li:last-child{border-bottom:none}
+  .pkg-features li::before{content:'✦';position:absolute;left:0;color:var(--orange);font-size:9px;top:8px}
+  .pkg-note{font-size:12px;opacity:0.5;line-height:1.6;margin-bottom:18px}
+
+  /* Prev/Next under slides */
+  .pkg-nav{display:flex;align-items:center;justify-content:space-between;margin-top:24px}
+  .pkg-nav-btn{background:var(--white);border:2px solid var(--yellow);border-radius:30px;padding:10px 24px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:all 0.2s;color:var(--brown)}
+  .pkg-nav-btn:hover{background:var(--orange);border-color:var(--orange);color:var(--white)}
+  .pkg-nav-btn:disabled{opacity:0.3;cursor:not-allowed}
+  .pkg-counter{font-size:14px;font-weight:700;opacity:0.6}
+
+  /* ── THEMED PARTIES ── */
+  .themed-section{background:var(--off-white)}
+  .themed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:32px}
+  .theme-card{background:var(--white);border-radius:18px;padding:18px 20px;border:2px solid var(--yellow);transition:transform 0.2s,box-shadow 0.2s}
+  .theme-card:hover{transform:translateY(-3px);box-shadow:4px 4px 0 var(--orange)}
+  .theme-card h4{font-family:'Abril Fatface',serif;font-size:15px;margin-bottom:8px;color:var(--brown)}
+  .theme-card ul{list-style:none;padding:0}
+  .theme-card ul li{font-size:12px;padding:2px 0 2px 14px;position:relative;opacity:0.75}
+  .theme-card ul li::before{content:'•';position:absolute;left:0;color:var(--orange)}
+  .theme-custom{background:var(--orange);border-radius:18px;padding:18px 20px;border:2px solid var(--orange);transition:transform 0.2s,box-shadow 0.2s}
+  .theme-custom:hover{transform:translateY(-3px);box-shadow:4px 4px 0 var(--brown)}
+  .theme-custom h4{font-family:'Abril Fatface',serif;font-size:15px;margin-bottom:6px;color:var(--white)}
+  .theme-custom p{font-size:12px;color:rgba(255,255,255,0.85);line-height:1.5;margin-bottom:10px}
+  .theme-custom a{color:var(--yellow);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;text-decoration:none}
+  .theme-custom a:hover{color:var(--white)}
+  .themed-note{background:var(--yellow);border-radius:16px;padding:18px 24px;font-size:15px;line-height:1.7;color:var(--brown);font-weight:700;text-align:center}
+
+  /* ── GALLERY STRIP ── */
+  .gallery-section{padding:0}
+  .gallery-strip{display:grid;grid-template-columns:repeat(3,1fr)}
+  .gallery-strip img{width:100%;height:300px;object-fit:cover;display:block;transition:transform 0.3s;filter:brightness(0.95)}
+  .gallery-strip img:hover{transform:scale(1.02);filter:brightness(1);z-index:1;position:relative}
+
+  /* ── ABOUT ── */
+  .about-section{background:var(--white)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .about-img-stack{position:relative;height:500px}
+  .about-img-top{position:absolute;top:0;right:0;width:70%;height:75%;border-radius:24px;border:5px solid var(--white);box-shadow:6px 6px 0 var(--teal);object-fit:cover;object-position:top center;display:block}
+  .about-img-bottom{position:absolute;bottom:0;left:0;width:48%;height:42%;border-radius:20px;border:5px solid var(--white);box-shadow:4px 4px 0 var(--pink);object-fit:cover;display:block;z-index:2}
+  .about-quote{background:var(--yellow);border-radius:20px;padding:26px 30px;margin-bottom:26px;border-left:6px solid var(--orange);position:relative}
+  .about-quote::before{content:'"';font-family:'Abril Fatface',serif;font-size:80px;color:var(--orange);position:absolute;top:-10px;left:20px;line-height:1;opacity:0.3}
+  .about-quote p{font-size:16px;line-height:1.7;font-style:italic;font-weight:600;padding-top:18px}
+  .about-quote cite{display:block;margin-top:8px;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--orange);font-style:normal}
+  .about-body p{font-size:16px;line-height:1.7;opacity:0.8;margin-bottom:18px}
+  .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+  .stat{text-align:center;padding:16px 10px;border-radius:14px;background:var(--off-white);border:2px solid var(--yellow)}
+  .stat-num{font-family:'Abril Fatface',serif;font-size:26px;color:var(--orange);display:block}
+  .stat-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;opacity:0.7;display:block;margin-top:3px}
+
+  /* ── CONTACT ── */
+  .contact-section{background:#6B4E28;color:var(--white)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .contact-section .section-title{color:var(--yellow)}
+  .contact-section .section-desc{color:rgba(255,255,255,0.8);margin-bottom:32px}
+  .contact-info-item{display:flex;gap:16px;align-items:flex-start;margin-bottom:22px}
+  .contact-info-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;color:rgba(255,255,255,0.8)}
+  .contact-info-text strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px;opacity:0.6;margin-bottom:4px}
+  .contact-info-text span{font-size:16px;font-weight:700}
+  .contact-form{background:var(--white);border-radius:28px;padding:40px}
+  .form-group{margin-bottom:18px}
+  .form-group label{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:var(--brown);margin-bottom:7px}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 17px;border:2px solid #E0D8C8;border-radius:12px;font-family:'Nunito',sans-serif;font-size:15px;color:var(--brown);background:var(--off-white);outline:none;transition:border-color 0.2s}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange);background:var(--white)}
+  .form-group textarea{resize:vertical;min-height:90px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-submit{width:100%;padding:15px;background:var(--orange);color:var(--white);border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:background 0.2s,transform 0.2s}
+  .form-submit:hover{background:var(--brown);transform:translateY(-2px)}
+  .acuity-box{margin-top:28px;padding:22px 26px;background:rgba(255,212,73,0.12);border-radius:16px;border:2px solid var(--yellow)}
+  .acuity-box p{font-size:14px;line-height:1.6;color:rgba(255,255,255,0.85);margin-bottom:12px}
+  .acuity-btn{display:inline-block;background:var(--yellow);color:var(--brown);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;padding:10px 22px;border-radius:30px;text-decoration:none;opacity:0.6;cursor:not-allowed}
+
+  /* ── FAQ ── */
+  .faq-section{background:linear-gradient(180deg,#E8FAF7 0%,var(--off-white) 100%)}
+  .faq-list{max-width:760px}
+  .faq-item{border-bottom:2px solid var(--teal)}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 0;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;color:var(--brown);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq-q:hover{color:var(--teal)}
+  .faq-icon{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--white);transition:transform 0.25s,background 0.25s}
+  .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--orange)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
+  .faq-item.open .faq-a{max-height:300px}
+  .faq-a p{font-size:15px;line-height:1.7;padding-bottom:20px;opacity:0.8}
+
+  /* ── SUBSCRIBE ── */
+  .subscribe-section{background:var(--teal);padding:60px 32px;text-align:center}
+  .subscribe-inner{max-width:540px;margin:0 auto}
+  .subscribe-section h3{font-family:'Abril Fatface',serif;font-size:clamp(24px,3vw,36px);color:var(--white);margin-bottom:10px}
+  .subscribe-section>div>p{font-size:16px;color:rgba(255,255,255,0.85);margin-bottom:28px;line-height:1.6}
+  .subscribe-form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .subscribe-input{flex:1;min-width:200px;padding:13px 18px;border-radius:50px;border:none;font-family:'Nunito',sans-serif;font-size:15px;outline:none;color:var(--brown)}
+  .subscribe-btn{background:var(--orange);color:var(--white);border:none;border-radius:50px;padding:13px 26px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+  .subscribe-btn:hover{background:var(--brown)}
+  .subscribe-note{font-size:12px;color:rgba(255,255,255,0.6);margin-top:12px}
+
+  /* ── FOOTER ── */
+  footer{background:#6B4E28;border-top:4px solid var(--orange);padding:48px 32px 32px;color:rgba(255,255,255,0.7);text-align:center}
+  .footer-logo{display:block;margin:0 auto 14px;height:56px;width:auto}
+  .footer-tagline{font-size:14px;margin-bottom:8px;opacity:0.55}
+  .footer-mission{font-size:13px;max-width:480px;margin:0 auto 24px;opacity:0.45;line-height:1.6}
+  .footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:24px;list-style:none}
+  .footer-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;transition:color 0.2s}
+  .footer-links a:hover{color:var(--yellow)}
+  .footer-social{display:flex;justify-content:center;gap:12px;margin-bottom:24px}
+  .social-btn{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(255,255,255,0.8);transition:background 0.2s,color 0.2s}
+  .social-btn:hover{background:var(--orange);color:var(--white)}
+  .footer-copy{font-size:11px;opacity:0.3;border-top:1px solid rgba(255,255,255,0.1);padding-top:22px}
+
+  /* ── BOOK A SESSION ── */
+  .book-section{background:linear-gradient(135deg,#FFF8E7 0%,#FFF0F6 100%)}
+  .book-banner{background:var(--orange);border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px;position:relative;overflow:hidden}
+  .book-banner::after{content:'🍬';position:absolute;font-size:160px;right:-10px;bottom:-20px;opacity:0.08;line-height:1}
+  .ticket-card{background:rgba(255,255,255,0.15);border-radius:20px;padding:24px;border:2px solid rgba(255,255,255,0.25);transition:background 0.2s}
+  .ticket-card:hover{background:rgba(255,255,255,0.22)}
+  .ticket-price{font-family:'Abril Fatface',serif;font-size:42px;color:var(--yellow);line-height:1;margin-bottom:4px}
+  .ticket-name{font-family:'Abril Fatface',serif;font-size:18px;color:var(--white);margin-bottom:8px}
+  .ticket-duration{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.7);margin-bottom:12px}
+  .ticket-features{list-style:none;margin-bottom:0}
+  .ticket-features li{font-size:13px;color:rgba(255,255,255,0.85);padding:3px 0 3px 16px;position:relative;line-height:1.4}
+  .ticket-features li::before{content:'✦';position:absolute;left:0;color:var(--yellow);font-size:9px;top:6px}
+  .book-cta-row{text-align:center;margin-bottom:32px}
+  .book-cta-btn{display:inline-block;background:var(--orange);color:var(--white);font-family:'Abril Fatface',serif;font-size:22px;padding:20px 56px;border-radius:50px;text-decoration:none;border:4px solid var(--brown);box-shadow:6px 6px 0 var(--brown);transition:all 0.2s;letter-spacing:0.5px}
+  .book-cta-btn:hover{background:var(--brown);border-color:var(--orange);box-shadow:3px 3px 0 var(--orange);transform:translate(3px,3px)}
+  .book-note{font-size:13px;opacity:0.6;margin-top:12px}
+
+  @media(max-width:900px){
+    .book-banner{grid-template-columns:1fr;gap:16px;padding:28px 20px}
+  }
+  @media(max-width:1100px){
+    .craft-grid{grid-template-columns:repeat(4,1fr)}
+    .craft-card-img{height:150px}
+  }
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:var(--white);border-bottom:3px solid var(--yellow);padding:16px 24px 24px;gap:4px;z-index:999}
+    .nav-toggle{display:block}
+    .hero-content{grid-template-columns:1fr;gap:36px;padding:60px 20px}
+    .hero-img-wrap{display:none}
+    .about-grid{grid-template-columns:1fr}
+    .about-img-stack{display:none}
+    .contact-grid{grid-template-columns:1fr}
+    .party-highlight{grid-template-columns:1fr;padding:32px 24px}
+    .party-highlight::after{display:none}
+    .party-types{grid-template-columns:1fr}
+    .pkg-slide.active{grid-template-columns:1fr}
+    .pkg-img{height:220px}
+    .form-row{grid-template-columns:1fr}
+    .gallery-strip{grid-template-columns:1fr 1fr}
+    .gallery-strip img{height:200px}
+    /* show mobile carousel instead of grid */
+    .craft-grid{display:none}
+    .craft-carousel-mobile{display:block}
+  }
+  @media(max-width:600px){
+    .section-inner{padding:56px 18px}
+    .nav-inner{padding:0 18px}
+    .gallery-strip{grid-template-columns:1fr}
+    .about-stats{grid-template-columns:1fr 1fr}
+    .subscribe-form{flex-direction:column;align-items:stretch}
+    .subscribe-input{min-width:unset}
+    .themed-grid{grid-template-columns:1fr 1fr}
+    .pkg-tabs{gap:6px}
+    .pkg-tab{font-size:11px;padding:6px 12px}
+  }
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .hero-text>*{animation:fadeUp 0.6s ease forwards;opacity:0}
+  .hero-text>*:nth-child(1){animation-delay:0.1s}.hero-text>*:nth-child(2){animation-delay:0.2s}
+  .hero-text>*:nth-child(3){animation-delay:0.3s}.hero-text>*:nth-child(4){animation-delay:0.4s}
+  .hero-text>*:nth-child(5){animation-delay:0.5s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#"><img src="https://www.dropbox.com/scl/fi/b1edth31w0p16opx8qsim/CCC_logo___07.2023.webp?rlkey=v8o9oaeai1os9ls81b9dok7qr&st=gwyh0f8m&raw=1" alt="Cricket's Candy Creations"></a>
+    <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#crafts">Candy Crafts</a></li>
+      <li><a href="#parties">Parties & Packages</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#book" class="nav-cta" style="background:var(--teal)!important">Book a Session</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Party</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">🍬 Coming Soon to Staten Island</div>
+      <h1><span class="l1">Cricket's</span><br><span class="l2">Candy</span><br><span class="l3">Creations</span></h1>
+      <p class="hero-sub">Staten Island just got sweeter!</p>
+      <p class="hero-desc">NYC's most beloved candy crafting experience is coming to Staten Island. Kids (and the young at heart!) make, create, and eat uniquely delicious candy crafts.</p>
+      <div class="hero-btns">
+        <a href="#book" class="btn-primary">Book a Session</a>
+        <a href="#contact" class="btn-secondary">Book a Party</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="https://www.dropbox.com/scl/fi/vmd2qhxfnec7ogflnus5p/5065cc6f-928e-46ac-a89e-8fc4b7fdc9a5.jpg?rlkey=lubvzhluwa24oxvvvekakc7mb&st=enoj122j&raw=1" alt="Happy kid at Cricket's Candy Creations">
+    </div>
+  </div>
+</section>
+
+<div class="candy-stripe"></div>
+
+<!-- BOOK A SESSION -->
+<section class="book-section" id="book">
+  <div class="section-inner">
+    <span class="section-tag tag-orange">Drop-In Sessions</span>
+    <h2 class="section-title" style="color:var(--orange)">Book a Candy Crafting Session</h2>
+    <p class="section-desc">Sessions run on the hour. Pick your ticket, choose your date and time, book instantly, and get ready for the sweetest hour of your life!</p>
+
+    <!-- 3 ticket types -->
+    <div class="book-banner">
+      <div class="ticket-card">
+        <div class="ticket-price">$65</div>
+        <div class="ticket-name">General Admission</div>
+        <div class="ticket-duration">50 Minutes</div>
+        <ul class="ticket-features">
+          <li>Entry + five candy creations</li>
+          <li>Up to 2 adult companions included</li>
+          <li>All ages welcome</li>
+          <li>Tickets must be purchased in advance</li>
+          <li>Children 14 & under must be accompanied by an adult</li>
+        </ul>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-price">$80</div>
+        <div class="ticket-name">Cherry on Top VIP</div>
+        <div class="ticket-duration">60 Minutes</div>
+        <ul class="ticket-features">
+          <li>Everything in General Admission</li>
+          <li>Apron or tote bag decorating session</li>
+          <li>Up to 2 adult companions included</li>
+          <li>All ages welcome</li>
+          <li>Tickets must be purchased in advance</li>
+        </ul>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-price">$20</div>
+        <div class="ticket-name">Birthday Add-On</div>
+        <div class="ticket-duration">Add to Any Ticket</div>
+        <ul class="ticket-features">
+          <li>Birthday candle & "Happy Birthday" song</li>
+          <li>Candy-themed keychain</li>
+          <li>Novelty candy gifts ($10 value)</li>
+          <li>Birthday bag of candy</li>
+          <li>Discount code for our shop</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Big obvious CTA -->
+    <div class="book-cta-row">
+      <a href="https://cricketscandysi.simplybook.me/v2/#book" target="_blank" class="book-cta-btn">🍭 Book Your Session Now</a>
+      <p class="book-note">Opens our booking calendar in a new tab. Sessions fill up fast!</p>
+    </div>
+  </div>
+</section>
+<section class="crafts-section" id="crafts">
+  <div class="section-inner">
+    <span class="section-tag tag-teal">What We Make</span>
+    <h2 class="section-title" style="color:var(--teal)">Candy Crafting Sessions</h2>
+    <p class="section-desc">Each session is packed with creativity, sweetness, and edible fun. Creators make and eat uniquely delicious candy crafts!</p>
+
+    <!-- Desktop: 7-card grid -->
+    <div class="craft-grid" id="craftGrid">
+      <div class="craft-card" onmouseenter="burstSprinkles(this)">
+        <img class="craft-card-img" src="https://www.dropbox.com/scl/fi/pauijlpekef9ozf2ms13b/Screenshot-2026-04-20-at-2.16.28-AM.png?rlkey=hgiryqkr2dagp27ia89v8gv06&st=8qx8zlas&raw=1" alt="Candy Kitchen">
+        <div class="craft-card-body"><h3 style="color:var(--amber)">Candy Kitchen</h3><p>Sweet takes on classic culinary creations, entirely candy!</p></div>
+      </div>
+      <div class="craft-card" onmouseenter="burstSprinkles(this)">
+        <img class="craft-card-img" src="https://www.dropbox.com/scl/fi/w550vql4vlpg4ea2kwqd0/GB_CCC_07CandyJewelry_Beauty_195.webp?rlkey=xoowrn3ds61fwhjp80fz6n18y&st=mlnfhx7b&raw=1" alt="Accessories Arcade">
+        <div class="craft-card-body"><h3 style="color:var(--teal)">Accessories Arcade</h3><p>Edible keychains, bracelets & more. All wearable and delicious!</p></div>
+      </div>
+      <div class="craft-card" onmouseenter="burstSprinkles(this)">
+        <img class="craft-card-img" src="https://www.dropbox.com/scl/fi/9yu6p6rz4sqeygn5ydzi1/Screenshot-2026-04-20-at-2.16.41-AM.png?rlkey=vobk0b4wyulnpsyywe2klr2t5&st=l38vjzon&raw=1" alt="Edible Slime">
+        <div class="craft-card-body"><h3 style="color:var(--green)">Edible Slime</h3><p>Birthday Cake, Gummy Bear, or Candy Slime, all edible!</p></div>
+      </div>
+      <div class="craft-card" onmouseenter="burstSprinkles(this)">
+        <img class="craft-card-img" src="https://www.dropbox.com/scl/fi/bae84b430wcdd93rndah4/Screenshot-2026-04-20-at-2.16.50-AM.png?rlkey=88g4m27v1y8e754n39t9u1fq0&st=jy0345yx&raw=1" alt="Chocolate Chamber">
+        <div class="craft-card-body"><h3 style="color:var(--brown)">Chocolate Chamber</h3><p>Pizzas, tacos, ice cream cones, made entirely of chocolate!</p></div>
+      </div>
+      <div class="craft-card" onmouseenter="burstSprinkles(this)">
+        <img class="craft-card-img" src="https://www.dropbox.com/scl/fi/lriixh2808i59qo0etp02/Screenshot-2026-04-20-at-2.16.58-AM.png?rlkey=1odt2hm7anxal20k14qohayuy&st=w3lf4320&raw=1" alt="Lickable Finger Paint">
+        <div class="craft-card-body"><h3 style="color:var(--pink)">Lickable Finger Paint</h3><p>Edible Chocolate Pudding finger paint, art you can eat!</p></div>
+      </div>
+      <div class="craft-card" onmouseenter="burstSprinkles(this)">
+        <img class="craft-card-img" src="https://www.dropbox.com/scl/fi/03zbf0gvarrppq20hr2lj/GB_CCC_06CandySushi_Beauty_156_LR_1.webp?rlkey=g580rtfcv9k741jzenkmat346&st=k66fp208&raw=1" alt="Candy Sushi">
+        <div class="craft-card-body"><h3 style="color:var(--amber)">Candy Sushi</h3><p>Rice Krispy rice, licorice seaweed, gummy toppings, delicious!</p></div>
+      </div>
+      <div class="craft-card seasonal" onmouseenter="burstSprinkles(this)">
+        <img class="craft-card-img" src="https://www.dropbox.com/scl/fi/52c0rej0wrvks3ue7ud6j/Screenshot-2026-04-20-at-1.19.33-AM.png?rlkey=4fqujql79kukv6lu16ubwpguq&st=hkg98toq&raw=1" alt="Seasonal Crafts">
+        <div class="craft-card-body"><span class="seasonal-badge">✨ Rotating</span><h3>Seasonal Crafts</h3><p>Changes with the seasons, always something new!</p></div>
+      </div>
+    </div>
+
+    <!-- Mobile: horizontal carousel -->
+    <div class="craft-carousel-mobile">
+      <div class="craft-mobile-track" id="mobileCraftTrack">
+        <div class="craft-mobile-card"><img src="https://www.dropbox.com/scl/fi/pauijlpekef9ozf2ms13b/Screenshot-2026-04-20-at-2.16.28-AM.png?rlkey=hgiryqkr2dagp27ia89v8gv06&st=8qx8zlas&raw=1" alt="Candy Kitchen"><div class="craft-mobile-body"><h3 style="color:var(--amber)">Candy Kitchen</h3><p>Sweet takes on classic culinary creations, Silly Sushi, Bogus Burgers, and beyond!</p></div></div>
+        <div class="craft-mobile-card"><img src="https://www.dropbox.com/scl/fi/w550vql4vlpg4ea2kwqd0/GB_CCC_07CandyJewelry_Beauty_195.webp?rlkey=xoowrn3ds61fwhjp80fz6n18y&st=mlnfhx7b&raw=1" alt="Accessories Arcade"><div class="craft-mobile-body"><h3 style="color:var(--teal)">Accessories Arcade</h3><p>Create keychains, bracelets, and more, all wearable and edible!</p></div></div>
+        <div class="craft-mobile-card"><img src="https://www.dropbox.com/scl/fi/9yu6p6rz4sqeygn5ydzi1/Screenshot-2026-04-20-at-2.16.41-AM.png?rlkey=vobk0b4wyulnpsyywe2klr2t5&st=l38vjzon&raw=1" alt="Edible Slime"><div class="craft-mobile-body"><h3 style="color:var(--green)">Edible Slime</h3><p>Mix up Birthday Cake, Gummy Bear, or Candy Slime flavor!</p></div></div>
+        <div class="craft-mobile-card"><img src="https://www.dropbox.com/scl/fi/bae84b430wcdd93rndah4/Screenshot-2026-04-20-at-2.16.50-AM.png?rlkey=88g4m27v1y8e754n39t9u1fq0&st=jy0345yx&raw=1" alt="Chocolate Chamber"><div class="craft-mobile-body"><h3 style="color:var(--brown)">Chocolate Chamber</h3><p>Chocolate Pizzas, Tacos, and Ice Cream Cones!</p></div></div>
+        <div class="craft-mobile-card"><img src="https://www.dropbox.com/scl/fi/lriixh2808i59qo0etp02/Screenshot-2026-04-20-at-2.16.58-AM.png?rlkey=1odt2hm7anxal20k14qohayuy&st=w3lf4320&raw=1" alt="Lickable Finger Paint"><div class="craft-mobile-body"><h3 style="color:var(--pink)">Lickable Finger Paint</h3><p>Edible Chocolate Pudding finger paint, art you can eat!</p></div></div>
+        <div class="craft-mobile-card"><img src="https://www.dropbox.com/scl/fi/03zbf0gvarrppq20hr2lj/GB_CCC_06CandySushi_Beauty_156_LR_1.webp?rlkey=g580rtfcv9k741jzenkmat346&st=k66fp208&raw=1" alt="Candy Sushi"><div class="craft-mobile-body"><h3 style="color:var(--amber)">Candy Sushi</h3><p>Rice Krispy rice, licorice seaweed, gummy toppings, delicious!</p></div></div>
+        <div class="craft-mobile-card seasonal"><img src="https://www.dropbox.com/scl/fi/52c0rej0wrvks3ue7ud6j/Screenshot-2026-04-20-at-1.19.33-AM.png?rlkey=4fqujql79kukv6lu16ubwpguq&st=hkg98toq&raw=1" alt="Seasonal"><div class="craft-mobile-body"><span class="seasonal-badge">✨ Rotating</span><h3>Seasonal Crafts</h3><p>Changes with the seasons, always something new!</p></div></div>
+      </div>
+      <div class="mobile-carousel-controls">
+        <button class="m-carousel-btn" onclick="mobileCraft(-1)">&#8592;</button>
+        <div class="m-carousel-dots" id="mCraftDots"></div>
+        <button class="m-carousel-btn" onclick="mobileCraft(1)">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="candy-stripe"></div>
+
+<!-- PARTIES & PACKAGES (COMBINED) -->
+<section class="parties-section" id="parties">
+  <div class="section-inner">
+    <span class="section-tag tag-pink">Celebrate With Us</span>
+    <h2 class="section-title" style="color:var(--pink)">Parties & Packages</h2>
+    <p class="section-desc">From intimate birthday parties to corporate events, we've got the sweetest celebrations in Staten Island. Fully customizable to your format, budget, and tastebuds!</p>
+
+    <!-- Orange banner -->
+    <div class="party-highlight">
+      <div>
+        <h3>The Sweetest Birthday Party on Staten Island</h3>
+        <p>Treat your birthday kid (and their friends!) to an unforgettable candy crafting celebration. We handle all the fun, you enjoy every magical moment.</p>
+        <a href="#contact" class="btn-white">Inquire Now</a>
+      </div>
+      <div>
+        <img src="https://www.dropbox.com/scl/fi/v0693mvu104sz5fr702f9/2022-07-06-CRICKET-S_CANDY_CREATIONS-_303.jpg?rlkey=u3wsghs1xpkvai6oo0ttn8rvw&st=qjjuxn83&raw=1" alt="Birthday party at Cricket's" class="party-highlight-img">
+      </div>
+    </div>
+
+    <!-- 3 event types -->
+    <div class="party-types">
+      <div class="party-type birthday">
+        <span class="party-type-icon">🎂</span>
+        <h4 style="color:var(--amber)">Birthday Parties</h4>
+        <p>A fully guided, hands-on candy crafting party your child will never forget.</p>
+        <ul class="party-type-features">
+          <li>Private party room</li>
+          <li>Guided candy craft session</li>
+          <li>Dedicated party host</li>
+          <li>Goodie bags for all guests</li>
+        </ul>
+        <a href="#pkg-sweet" onclick="openPackage('sweet')" class="btn-card btn-orange">See Birthday Packages</a>
+      </div>
+      <div class="party-type private">
+        <span class="party-type-icon">🎉</span>
+        <h4 style="color:var(--pink)">Private Parties</h4>
+        <p>Book the whole space, perfect for playdates, sleepovers, school events, and every celebration.</p>
+        <ul class="party-type-features">
+          <li>Exclusive venue buyout</li>
+          <li>Customizable experience</li>
+          <li>All ages welcome</li>
+          <li>Candy-themed decor available</li>
+        </ul>
+        <a href="#contact" class="btn-card btn-pink">Get Info</a>
+      </div>
+      <div class="party-type corporate">
+        <span class="party-type-icon">🏢</span>
+        <h4 style="color:var(--teal)">Group & Corporate Events</h4>
+        <p>Team building, school groups, or organizations, creative, delicious, and unforgettable.</p>
+        <ul class="party-type-features">
+          <li>Groups of all sizes</li>
+          <li>Team-building focused</li>
+          <li>Custom candy craft menu</li>
+          <li>Schools & camps welcome</li>
+        </ul>
+        <a href="#contact" class="btn-card btn-teal">Get Info</a>
+      </div>
+    </div>
+
+    <!-- Package carousel with tabs -->
+    <div class="pkg-carousel-wrap" id="packages">
+      <div class="pkg-intro">
+        <p><em>Please note we're happy to customize your event to fit desired format, duration, budget, themes, and tastebuds!</em></p>
+        <p style="opacity:0.8;font-size:13px;margin-top:6px">All packages include a dedicated party host. Reach out for a custom quote!</p>
+      </div>
+
+      <div class="pkg-tabs">
+        <button class="pkg-tab active" onclick="switchPkg(0)">Sweet Celebration</button>
+        <button class="pkg-tab" onclick="switchPkg(1)">Cherry on Top</button>
+        <button class="pkg-tab" onclick="switchPkg(2)">Candy Sushi Party</button>
+        <button class="pkg-tab" onclick="switchPkg(3)">Candy Creator Deluxe</button>
+        <button class="pkg-tab" onclick="switchPkg(4)">Candy Jewelry Party</button>
+        <button class="pkg-tab" onclick="switchPkg(5)">Sleep-under</button>
+      </div>
+
+      <div class="pkg-slides">
+
+        <div class="pkg-slide active" id="pkg-sweet">
+          <img class="pkg-img" src="https://www.dropbox.com/scl/fi/h85yhk7ikbl7oa1hgra22/Screenshot-2026-04-20-at-3.19.22-AM.png?rlkey=onrjs90og80zq0pg5v2dfise8&st=lfx7dfra&raw=1" alt="Sweet Celebration Party">
+          <div>
+            <span class="pkg-tag kids">Up to 4 Years Old</span>
+            <h3 class="pkg-title">Sweet Celebration Party</h3>
+            <p class="pkg-price">Starting at $995</p>
+            <p style="font-size:14px;font-weight:700;color:var(--brown);opacity:0.65;margin-top:-10px;margin-bottom:14px">90 Minutes</p>
+            <p class="pkg-desc">This party adapts the candy crafting experience in an age-appropriate fashion through slower pacing. Guests create two candy crafts, then enjoy time to eat, play games, and celebrate.</p>
+            <ul class="pkg-features">
+              <li>Up to 10 children (additional children extra)</li>
+              <li>Aprons and tote bags to decorate</li>
+              <li>2 candy crafts to take home</li>
+              <li>Juice and water for children</li>
+              <li>Optional cake and catering platters</li>
+              <li>Digital custom invitations</li>
+              <li>Decorations, tablecloths & photo backdrop</li>
+              <li>Dedicated party host</li>
+            </ul>
+            <p class="pkg-note">Guests may bring their own cake or inquire about catering partners. Plus tax and gratuity.</p>
+            <a href="#contact" class="btn-card btn-orange">Inquire Now</a>
+          </div>
+        </div>
+
+        <div class="pkg-slide" id="pkg-cherry">
+          <img class="pkg-img" src="https://www.dropbox.com/scl/fi/xjkal43r6etfqz2k7m4pl/Screenshot-2026-04-20-at-3.19.49-AM.png?rlkey=xb33vgspc4kw681yy0nxrjby0&st=t7k0scya&raw=1" alt="Cherry on Top Party">
+          <div>
+            <span class="pkg-tag all">Great for All Ages</span>
+            <h3 class="pkg-title">Cherry on Top!</h3>
+            <p class="pkg-price">Starting at $1,195</p>
+            <p style="font-size:14px;font-weight:700;color:var(--brown);opacity:0.65;margin-top:-10px;margin-bottom:14px">90 Minutes · Parent Lounge Included ✨</p>
+            <p class="pkg-desc">Guests enjoy the full candy crafting space as they create 5 edible crafts, decorate aprons and tote bags, make cotton candy, and enjoy time for outside food and cake.</p>
+            <ul class="pkg-features">
+              <li>Up to 10 guests (additional guests extra)</li>
+              <li>5 candy crafts to take home</li>
+              <li>Cotton Candy Making</li>
+              <li>Special tote bag and apron decorating session</li>
+              <li>Optional outside food and cake</li>
+              <li>Juice and water for children</li>
+              <li>Digital custom invitations</li>
+              <li>Bag of candy for each guest</li>
+              <li>Dedicated party host</li>
+              <li>Parent Lounge included ✨</li>
+            </ul>
+            <p class="pkg-note">Plus tax and gratuity.</p>
+            <a href="#contact" class="btn-card btn-pink">Inquire Now</a>
+          </div>
+        </div>
+
+        <div class="pkg-slide" id="pkg-sushi">
+          <img class="pkg-img" src="https://www.dropbox.com/scl/fi/03zbf0gvarrppq20hr2lj/GB_CCC_06CandySushi_Beauty_156_LR_1.webp?rlkey=g580rtfcv9k741jzenkmat346&st=k66fp208&raw=1" alt="Candy Sushi Party">
+          <div>
+            <span class="pkg-tag all">Great for Kids or Adults!</span>
+            <h3 class="pkg-title">Sushi & Candy Sushi Party 🍱</h3>
+            <p class="pkg-price">Starting at $995</p>
+            <p style="font-size:14px;font-weight:700;color:var(--brown);opacity:0.65;margin-top:-10px;margin-bottom:14px">90 Minutes</p>
+            <p class="pkg-desc">Cricket's Candy Creations team leads guests in making Candy Sushi! Guests decorate aprons to bring home as party favors.</p>
+            <ul class="pkg-features">
+              <li>Up to 10 guests (additional guests extra)</li>
+              <li>Make Candy & Fruit Vegetable Sushi</li>
+              <li>Shrimp or other protein available at additional cost</li>
+              <li>Outside food and beverage allowed</li>
+              <li>Optional: Candy Sushi Kit at 10% discount</li>
+              <li>Dedicated party host</li>
+            </ul>
+            <p class="pkg-note">Plus tax and gratuity.</p>
+            <a href="#contact" class="btn-card btn-teal">Inquire Now</a>
+          </div>
+        </div>
+
+        <div class="pkg-slide" id="pkg-deluxe">
+          <img class="pkg-img" src="https://www.dropbox.com/scl/fi/xjkal43r6etfqz2k7m4pl/Screenshot-2026-04-20-at-3.19.49-AM.png?rlkey=xb33vgspc4kw681yy0nxrjby0&st=t7k0scya&raw=1" alt="Candy Creator Deluxe">
+          <div>
+            <span class="pkg-tag all">Great for All Ages</span>
+            <h3 class="pkg-title">Candy Creator Deluxe</h3>
+            <p class="pkg-price">Starting at $1,395</p>
+            <p style="font-size:14px;font-weight:700;color:var(--brown);opacity:0.65;margin-top:-10px;margin-bottom:14px">90 Minutes · Parent Lounge Included ✨</p>
+            <p class="pkg-desc">Our most elevated party experience, premium candy crafting with every detail taken care of, including the exclusive Parent Lounge so grown-ups can relax in style while kids create.</p>
+            <ul class="pkg-features">
+              <li>Up to 10 guests (additional guests extra)</li>
+              <li>5 candy crafts to take home</li>
+              <li>Decorate aprons and tote bags</li>
+              <li>Outside food and beverage allowed</li>
+              <li>Digital custom invitations</li>
+              <li>Dedicated party host</li>
+              <li>Parent Lounge included ✨</li>
+            </ul>
+            <p class="pkg-note">Plus tax and gratuity.</p>
+            <a href="#contact" class="btn-card btn-orange">Inquire Now</a>
+          </div>
+        </div>
+
+        <div class="pkg-slide" id="pkg-jewelry">
+          <img class="pkg-img" src="https://www.dropbox.com/scl/fi/w550vql4vlpg4ea2kwqd0/GB_CCC_07CandyJewelry_Beauty_195.webp?rlkey=xoowrn3ds61fwhjp80fz6n18y&st=mlnfhx7b&raw=1" alt="Candy Jewelry Party">
+          <div>
+            <span class="pkg-tag all">Great for Kids or Adults!</span>
+            <h3 class="pkg-title">Candy Jewelry Party 💎</h3>
+            <p class="pkg-price">Starting at $995</p>
+            <p style="font-size:14px;font-weight:700;color:var(--brown);opacity:0.65;margin-top:-10px;margin-bottom:14px">90 Minutes</p>
+            <p class="pkg-desc">Guests decorate aprons to bring home as party favors. Cricket's team leads guests in creating 3 candy accessories, headbands, necklaces, keychains, and more!</p>
+            <ul class="pkg-features">
+              <li>Up to 10 guests (additional guests extra)</li>
+              <li>Create 3 candy accessories</li>
+              <li>Decorate a beadbox with gems and glitter pens</li>
+              <li>Outside food and beverage allowed</li>
+              <li>Dedicated party host</li>
+            </ul>
+            <p class="pkg-note">Plus tax and gratuity.</p>
+            <a href="#contact" class="btn-card btn-pink">Inquire Now</a>
+          </div>
+        </div>
+
+        <div class="pkg-slide" id="pkg-sleepunder">
+          <img class="pkg-img" src="https://www.dropbox.com/scl/fi/voh5o0wdqv5fqo16uj7db/Screenshot-2026-04-20-at-3.20.21-AM.png?rlkey=bjtxqh2j4hbmiu1lc822w7k6g&st=nurj9bo7&raw=1" alt="Sleep-under Party" style="object-position:top">
+          <div>
+            <span class="pkg-tag kids">Kids Special</span>
+            <h3 class="pkg-title">Night at the Candy Store: Sleep-unders</h3>
+            <p class="pkg-price">Starting at $1,795</p>
+            <p style="font-size:14px;font-weight:700;color:var(--brown);opacity:0.65;margin-top:-10px;margin-bottom:14px">4 Hours</p>
+            <p class="pkg-desc">An exclusive evening at Cricket's, Cotton Candy Appetizers, Pizza Dinner, Chocolate Pizza Dessert, Movie Screening, Mid-movie Popcorn and a Candy Bar.</p>
+            <ul class="pkg-features">
+              <li>Up to 10 children (additional children extra)</li>
+              <li>Game or Dance Party (host's choice)</li>
+              <li>Candy craft or non-edible craft</li>
+              <li>Sweet and Savory Popcorn bar</li>
+              <li>Dedicated party host</li>
+            </ul>
+            <p class="pkg-note">Plus tax and gratuity.</p>
+            <a href="#contact" class="btn-card btn-teal">Inquire Now</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pkg-nav">
+        <button class="pkg-nav-btn" id="pkgPrev" onclick="stepPkg(-1)">← Previous</button>
+        <span class="pkg-counter" id="pkgCounter">1 / 6</span>
+        <button class="pkg-nav-btn" id="pkgNext" onclick="stepPkg(1)">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="candy-stripe"></div>
+
+<!-- THEMED PARTIES -->
+<section class="themed-section" id="themed">
+  <div class="section-inner">
+    <span class="section-tag tag-pink">Themed Experiences</span>
+    <h2 class="section-title" style="color:var(--pink)">Themed Parties</h2>
+    <p class="section-desc">Themed candy crafts applied to your Cherry on Top or Sweet Celebration Package. Pick a theme, or dream up your own!</p>
+
+    <div class="themed-grid">
+      <div class="theme-card"><h4>🎤 Pop Star!</h4><ul><li>Chocolate Microphones</li><li>Pop Star Pops</li><li>Candy Friendship Bracelets</li><li>Pop Star Slime</li><li>Karaoke or Dance Party</li></ul></div>
+      <div class="theme-card"><h4>👑 Royal Celebrations!</h4><ul><li>Candy Crowns</li><li>Sugary Sceptres</li><li>Nobel Slime</li><li>Royal Portraits</li></ul></div>
+      <div class="theme-card"><h4>🧜 Mermaids!</h4><ul><li>Mermaid Tails</li><li>Candy Seashells</li><li>Mermaid Slime</li><li>Mermaid Paintings</li></ul></div>
+      <div class="theme-card"><h4>🦄 Unicorn!</h4><ul><li>Unicorn Horns</li><li>Unicorn Slime</li><li>Unicorn Paintings</li></ul></div>
+      <div class="theme-card"><h4>🐻 Gummy Bear!</h4><ul><li>Groovy Gummy Bears</li><li>Gummy Bear Slime</li><li>Gummy Bear Jewelry</li><li>Gummy Bear Painting</li></ul></div>
+      <div class="theme-card"><h4>🪄 Magic!</h4><ul><li>Magic Wand</li><li>Magician's Slime</li><li>Magical Paintings</li></ul></div>
+      <div class="theme-card"><h4>🦕 Dinosaurs!</h4><ul><li>Dinosaur Eggs</li><li>Dinosaur Slime</li><li>Dinosaur Paintings</li></ul></div>
+      <div class="theme-card"><h4>🍭 Lollipop!</h4><ul><li>Chocolate Lollipop Trees</li><li>Lollipop Slime</li></ul></div>
+      <div class="theme-card"><h4>🍫 Chocolate Mania!</h4><ul><li>Chocolate Pizza</li><li>Chocolate Tacos</li><li>Chocolate Hot Dogs</li></ul></div>
+      <div class="theme-custom">
+        <h4>✨ Your Dream Theme!</h4>
+        <p>Have an idea that isn't on the list? We love bringing creative visions to life, tell us your dream and we'll make it happen.</p>
+        <a href="#contact">Let's dream it up →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARENT LOUNGE -->
+<section style="background:#6B4E28;color:var(--white);padding:0">
+  <div style="max-width:1200px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+    <div>
+      <span style="display:inline-block;background:var(--yellow);color:var(--brown);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:2px;padding:6px 16px;border-radius:20px;margin-bottom:16px">For the Grown-Ups</span>
+      <h2 style="font-family:'Abril Fatface',serif;font-size:clamp(28px,3.5vw,44px);color:var(--yellow);line-height:1.1;margin-bottom:12px">Cricket's Parent Lounge</h2>
+      <p style="font-family:'Abril Fatface',serif;font-size:18px;color:var(--pink);margin-bottom:20px">An Elevated Retreat for Grown-Ups</p>
+      <p style="font-size:16px;line-height:1.7;opacity:0.85;margin-bottom:28px">While children are immersed in candy crafting, parents enjoy a curated lounge experience. Available with any package, included in Cherry on Top and Candy Creator Deluxe.</p>
+      <ul style="list-style:none;margin-bottom:28px">
+        <li style="font-size:15px;font-weight:700;padding:6px 0 6px 22px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1)"><span style="position:absolute;left:0;color:var(--yellow)">✦</span> Lounge style seating</li>
+        <li style="font-size:15px;font-weight:700;padding:6px 0 6px 22px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1)"><span style="position:absolute;left:0;color:var(--yellow)">✦</span> Accent tables + layered lighting</li>
+        <li style="font-size:15px;font-weight:700;padding:6px 0 6px 22px;position:relative;border-bottom:1px solid rgba(255,255,255,0.1)"><span style="position:absolute;left:0;color:var(--yellow)">✦</span> Water + coffee service</li>
+        <li style="font-size:15px;font-weight:700;padding:6px 0 6px 22px;position:relative"><span style="position:absolute;left:0;color:var(--yellow)">✦</span> Dedicated host check-ins</li>
+      </ul>
+      <p style="font-size:13px;opacity:0.55">*Can bring own food &nbsp;·&nbsp; Add-on available with any package</p>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:28px;border:2px solid rgba(255,212,73,0.3);padding:40px;text-align:center">
+      <div style="font-size:64px;margin-bottom:20px">☕</div>
+      <p style="font-family:'Abril Fatface',serif;font-size:22px;color:var(--yellow);margin-bottom:10px">Relax. Recharge. Rejoice.</p>
+      <p style="font-size:15px;opacity:0.75;line-height:1.7;margin-bottom:24px">You dropped off the kids at the candy crafting session, now it's your turn to enjoy a quiet, comfortable moment. We've got you covered.</p>
+      <a href="#contact" style="display:inline-block;background:var(--yellow);color:var(--brown);font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:1px;padding:12px 28px;border-radius:30px;text-decoration:none">Add to My Package</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-strip">
+    <img src="https://www.dropbox.com/scl/fi/h85yhk7ikbl7oa1hgra22/Screenshot-2026-04-20-at-3.19.22-AM.png?rlkey=onrjs90og80zq0pg5v2dfise8&st=lfx7dfra&raw=1" alt="Kid doing craft">
+    <img src="https://www.dropbox.com/scl/fi/03zbf0gvarrppq20hr2lj/GB_CCC_06CandySushi_Beauty_156_LR_1.webp?rlkey=g580rtfcv9k741jzenkmat346&st=k66fp208&raw=1" alt="Candy Sushi">
+    <img src="https://www.dropbox.com/scl/fi/vmd2qhxfnec7ogflnus5p/5065cc6f-928e-46ac-a89e-8fc4b7fdc9a5.jpg?rlkey=lubvzhluwa24oxvvvekakc7mb&st=enoj122j&raw=1" alt="Happy kid">
+  </div>
+</div>
+
+<div class="candy-stripe"></div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-stack">
+        <img class="about-img-top" src="https://www.dropbox.com/scl/fi/rscq7kqfneflcssdzja7j/GB_CCC_10Cricket_401_OPS_LAY-G1.webp?rlkey=4dxamkenk3youla5zjclo209c&st=ss88dhhe&raw=1" alt="Cricket Azima, Founder">
+        <img class="about-img-bottom" src="https://www.dropbox.com/scl/fi/wcmhxz461n0kt4a1vnj76/2022-07-06-CRICKET-S_CANDY_CREATIONS-_254.jpg?rlkey=ghm2bftz9as0zldsrzh3v73d7&st=ah2x19xj&raw=1" alt="Kids crafting">
+      </div>
+      <div class="about-body">
+        <span class="section-tag tag-orange">About</span>
+        <h2 class="section-title" style="color:var(--orange)">Where Candy Meets Creativity</h2>
+        <p>Cricket's Candy Creations' mission is to provide innovative educational experiences and a unique outlet for exploration, visualization, creativity, and fun.</p>
+        <p>Our Staten Island location is locally owned and operated, bringing the same award-winning experience that made the NYC location a media sensation (TODAY Show, Blippi, Meekah!) right here to our community.</p>
+        <div class="about-quote">
+          <p>"I wanted to provide a space for kids — and the young at heart — to let loose, explore, engage, create and of course eat!"</p>
+          <cite>— Cricket Azima, Founder of Cricket's Candy Creations</cite>
+        </div>
+        <div class="about-stats">
+          <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Crafts Per Session</span></div>
+          <div class="stat"><span class="stat-num">All Ages</span><span class="stat-label">Kids & Adults Welcome</span></div>
+          <div class="stat"><span class="stat-num">SI's 1st</span><span class="stat-label">Candy Crafting Studio</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="candy-stripe"></div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <span class="section-tag tag-yellow">Get In Touch</span>
+        <h2 class="section-title">Book a Party or Ask Us Anything</h2>
+        <p class="section-desc">Ready to make it the sweetest event ever? Fill out the form and we'll be in touch within 24 hours.</p>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📍</div>
+          <div class="contact-info-text"><strong>Location</strong><span>2955 Veterans Rd. West, Suite A<br>Staten Island, NY 10309<br><em style="opacity:0.6;font-size:13px;">Above Crumbl Cookies</em></span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">✉️</div>
+          <div class="contact-info-text"><strong>Email</strong><span>hello@cricketscandysi.com</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon" style="padding:12px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+          </div>
+          <div class="contact-info-text"><strong>Instagram</strong><span><a href="https://www.instagram.com/cricketscandy_statenisland/" target="_blank" style="color:var(--yellow)">@cricketscandy_statenisland</a></span></div>
+        </div>
+        <div class="acuity-box">
+          <p><strong style="color:var(--yellow);display:block;margin-bottom:8px;font-size:13px;text-transform:uppercase;letter-spacing:1px;">Book a Session Online</strong>Use our SimplyBook.me link to book sessions directly, or fill out the inquiry form below for parties and events.</p>
+          <a href="https://cricketscandysi.simplybook.me/v2/" target="_blank" class="acuity-btn" style="opacity:1;cursor:pointer;text-decoration:none">Book Online Now 🍬</a>
+        </div>
+        <div style="margin-top:24px;padding:22px 26px;background:rgba(255,255,255,0.06);border-radius:16px;border:1px solid rgba(255,255,255,0.1)">
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--yellow);margin-bottom:8px">Part of the CCC Family</p>
+          <p style="font-size:14px;opacity:0.7;line-height:1.6">Proud franchise of <a href="https://cricketscandy.com" target="_blank" style="color:var(--yellow)">Cricket's Candy Creations NYC</a>, as seen on the TODAY Show!</p>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="font-family:'Abril Fatface',serif;font-size:22px;color:var(--orange);margin-bottom:24px">Party Inquiry Form</h3>
+        <div id="form-success" style="display:none;background:#EDFAF7;border:2px solid var(--teal);border-radius:16px;padding:22px;text-align:center;margin-bottom:18px">
+          <p style="font-family:'Abril Fatface',serif;font-size:20px;color:var(--teal);margin-bottom:6px">You're all set! 🍬</p>
+          <p style="font-size:14px;color:var(--brown);opacity:0.8">Thanks! We'll be in touch within 24 hours.</p>
+        </div>
+        <form id="inquiry-form" action="https://formspree.io/f/mjgjebyn" method="POST">
+          <input type="hidden" name="_next" value="https://cricketscandysi.com/#contact">
+          <input type="hidden" name="_subject" value="New Party Inquiry from cricketscandysi.com">
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" name="first_name" placeholder="First name" required></div>
+            <div class="form-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Last name" required></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="you@email.com" required></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="(718) 555-0000"></div>
+          <div class="form-group">
+            <label>Type of Event</label>
+            <select name="event_type" required>
+              <option value="">Select an event type...</option>
+              <option>Sweet Celebration Party</option>
+              <option>Cherry on Top Party</option>
+              <option>Sushi & Candy Sushi Party</option>
+              <option>Candy Jewelry Party</option>
+              <option>Night at the Candy Store Sleep-under</option>
+              <option>Sweet Spa TREAT-ment Party</option>
+              <option>Corporate / Group Event</option>
+              <option>Themed Party</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Approximate Date</label><input type="date" name="event_date"></div>
+            <div class="form-group"><label>Number of Guests</label><input type="number" name="num_guests" placeholder="e.g. 15" min="1"></div>
+          </div>
+          <div class="form-group"><label>Tell Us More</label><textarea name="message" placeholder="Any special requests, allergies, theme ideas, or questions..."></textarea></div>
+          <button type="submit" class="form-submit" id="submit-btn">Send My Inquiry 🍬</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="candy-stripe"></div>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <span class="section-tag tag-teal">Good to Know</span>
+    <h2 class="section-title" style="color:var(--teal)">Before You Visit</h2>
+    <p class="section-desc">Everything you need to know before your visit.</p>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does the experience last?<span class="faq-icon">+</span></button><div class="faq-a"><p>The General Admission experience is approximately 50 minutes, while the Cherry on Top experience is approximately 60 minutes.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How old does my child have to be to participate?<span class="faq-icon">+</span></button><div class="faq-a"><p>Children of all ages are welcome! Children 14 and under must be accompanied by an adult.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is Cricket's Candy Creations an allergy free zone?<span class="faq-icon">+</span></button><div class="faq-a"><p>While our crafts do not contain tree nuts or peanuts, some ingredients have packaging with wording such as "manufactured in a facility that may also process tree nuts and peanuts."</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can people attend alone?<span class="faq-icon">+</span></button><div class="faq-a"><p>Yes! Anyone over the age of 15 can attend alone. Children 14 and under must be accompanied by an adult.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer dairy free, kosher, and vegan options?<span class="faq-icon">+</span></button><div class="faq-a"><p>While not all candies we use are kosher and/or dairy-free, if you reach out with at least 72 hours notice, we can do our best to ensure substitute ingredients when applicable.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is Cricket's Candy Creations wheelchair accessible?<span class="faq-icon">+</span></button><div class="faq-a"><p>Yes, people of various abilities can take part in activities at Cricket's Candy Creations!</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I book a party or session?<span class="faq-icon">+</span></button><div class="faq-a"><p>Online booking via SimplyBook.me is coming very soon! In the meantime, fill out the contact form or email hello@cricketscandysi.com and we'll get you set up right away.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I bring my own cake to a birthday party?<span class="faq-icon">+</span></button><div class="faq-a"><p>Yes! You're welcome to bring your own cake and light refreshments. Please let us know in advance so we can coordinate timing.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is this connected to Cricket's Candy Creations NYC?<span class="faq-icon">+</span></button><div class="faq-a"><p>Yes! We're an official franchise of Cricket's Candy Creations, the original NYC candy crafting studio as seen on the TODAY Show. Same beloved experience, right here on Staten Island.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL SUBSCRIBE -->
+<!--
+  TO MAKE THIS LIVE WITH CONSTANT CONTACT:
+  1. Log into Constant Contact → Campaigns → Sign-up Forms → Create a Sign-up Form
+  2. Choose "Inline" form type
+  3. Copy the form's action URL (looks like: https://visitor.constantcontact.com/d.jsp?...)
+  4. Replace YOUR_CONSTANT_CONTACT_ACTION_URL below with that URL
+  5. You may also need to add a hidden field, CC will show you the exact code to copy
+-->
+<section class="subscribe-section">
+  <div class="subscribe-inner">
+    <h3>Stay in the Loop! 🍬</h3>
+    <p>Be the first to know when we open, get exclusive offers, and hear about upcoming events.</p>
+    <form class="subscribe-form" action="https://lp.constantcontactpages.com/sl/haTotIe" method="GET" target="_blank" id="subscribe-form">
+      <!-- Constant Contact may require hidden fields, paste them here -->
+      <input class="subscribe-input" type="email" name="ca" placeholder="Enter your email address" required>
+      <button class="subscribe-btn" type="submit">Notify Me</button>
+    </form>
+    <p class="subscribe-note">No spam, ever. Just the sweetest updates.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo" src="https://www.dropbox.com/scl/fi/b1edth31w0p16opx8qsim/CCC_logo___07.2023.webp?rlkey=v8o9oaeai1os9ls81b9dok7qr&st=gwyh0f8m&raw=1" alt="Cricket's Candy Creations">
+  <p class="footer-tagline">Staten Island's sweetest candy crafting studio</p>
+  <p class="footer-mission">Cricket's Candy Creations' mission is to provide innovative educational experiences and a unique outlet for exploration, visualization, creativity, and fun.</p>
+  <ul class="footer-links">
+    <li><a href="#crafts">Candy Crafts</a></li>
+    <li><a href="#parties">Parties</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://cricketscandy.com" target="_blank">CCC NYC ↗</a></li>
+  </ul>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/cricketscandy_statenisland/" target="_blank" class="social-btn" title="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+    </a>
+    <a href="https://www.facebook.com/CricketsCandy" target="_blank" class="social-btn" title="Facebook">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@cricketscandycreations" target="_blank" class="social-btn" title="TikTok">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.17 8.17 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+    </a>
+  </div>
+  <p class="footer-copy">© 2026 Cricket's Candy Creations Staten Island. A Cricket's Candy Creations franchise. All rights reserved.</p>
+</footer>
+
+<script>
+  // ── NAV ──
+  function toggleNav(){document.getElementById('navLinks').classList.toggle('open')}
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+
+  // ── FAQ ──
+  function toggleFaq(btn){
+    const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+    if(!isOpen)item.classList.add('open');
+  }
+
+  // ── FORMSPREE ──
+  const inquiryForm=document.getElementById('inquiry-form'),successMsg=document.getElementById('form-success'),submitBtn=document.getElementById('submit-btn');
+  // Form submits directly to Formspree via HTML action attribute - no JS needed
+
+  // ── SUBSCRIBE ──
+  function handleSubscribe(e){
+    e.preventDefault();
+    const msg=document.getElementById('subscribe-msg');
+    msg.textContent="🍬 You're on the list! We'll be in touch when we open.";
+    msg.style.color='#FFD449';msg.style.fontWeight='800';
+    e.target.querySelector('input').value='';
+  }
+
+  // ── SPRINKLE BURST on craft card hover ──
+  const COLORS=['#F15A29','#EA78AF','#FFD449','#83C55F','#34BBA0','#F89921'];
+  function burstSprinkles(card){
+    // remove old sprinkles
+    card.querySelectorAll('.sprinkle').forEach(s=>s.remove());
+    for(let i=0;i<8;i++){
+      const s=document.createElement('div');
+      s.className='sprinkle';
+      const angle=Math.random()*360,dist=30+Math.random()*30;
+      const tx=Math.cos(angle*Math.PI/180)*dist,ty=Math.sin(angle*Math.PI/180)*dist;
+      s.style.cssText=`
+        left:${20+Math.random()*60}%;
+        top:${20+Math.random()*60}%;
+        background:${COLORS[i%COLORS.length]};
+        --tx:translate(${tx}px,${ty}px);
+        animation-delay:${Math.random()*0.1}s;
+      `;
+      card.appendChild(s);
+      setTimeout(()=>s.remove(),700);
+    }
+  }
+
+  // ── MOBILE CRAFT CAROUSEL ──
+  let mCraftIdx=0;
+  const mTrack=document.getElementById('mobileCraftTrack');
+  const mDotsWrap=document.getElementById('mCraftDots');
+  function getMCards(){return Array.from(mTrack?mTrack.querySelectorAll('.craft-mobile-card'):[])}
+  function buildMDots(){
+    if(!mDotsWrap)return;
+    const cards=getMCards();
+    mDotsWrap.innerHTML='';
+    cards.forEach((_,i)=>{
+      const d=document.createElement('button');
+      d.className='m-dot'+(i===0?' active':'');
+      d.onclick=()=>goMCraft(i);
+      mDotsWrap.appendChild(d);
+    });
+  }
+  function goMCraft(idx){
+    const cards=getMCards();
+    if(!cards.length)return;
+    mCraftIdx=((idx%cards.length)+cards.length)%cards.length;
+    mTrack.style.transform=`translateX(-${mCraftIdx*(cards[0].offsetWidth+16)}px)`;
+    mDotsWrap.querySelectorAll('.m-dot').forEach((d,i)=>d.classList.toggle('active',i===mCraftIdx));
+  }
+  function mobileCraft(dir){goMCraft(mCraftIdx+dir)}
+
+  // touch on mobile carousel
+  let mDragStart=0,mDragging=false,mDelta=0;
+  if(mTrack){
+    mTrack.addEventListener('touchstart',e=>{mDragging=true;mDragStart=e.touches[0].clientX},{passive:true});
+    mTrack.addEventListener('touchmove',e=>{if(mDragging)mDelta=e.touches[0].clientX-mDragStart},{passive:true});
+    mTrack.addEventListener('touchend',()=>{if(mDragging){if(mDelta<-40)mobileCraft(1);else if(mDelta>40)mobileCraft(-1);mDragging=false;mDelta=0;}});
+  }
+
+  // ── PACKAGE TABS ──
+  const pkgSlides=Array.from(document.querySelectorAll('.pkg-slide'));
+  const pkgTabs=Array.from(document.querySelectorAll('.pkg-tab'));
+  let pkgIdx=0;
+
+  function switchPkg(i){
+    pkgSlides.forEach((s,j)=>s.classList.toggle('active',j===i));
+    pkgTabs.forEach((t,j)=>t.classList.toggle('active',j===i));
+    pkgIdx=i;
+    updatePkgNav();
+  }
+
+  function stepPkg(dir){switchPkg(Math.max(0,Math.min(pkgSlides.length-1,pkgIdx+dir)))}
+
+  function updatePkgNav(){
+    document.getElementById('pkgPrev').disabled=pkgIdx===0;
+    document.getElementById('pkgNext').disabled=pkgIdx===pkgSlides.length-1;
+    document.getElementById('pkgCounter').textContent=`${pkgIdx+1} / ${pkgSlides.length}`;
+  }
+
+  function openPackage(id){
+    const map={sweet:0,cherry:1,sushi:2,jewelry:3,sleepunder:4,spa:5};
+    if(map[id]!==undefined)setTimeout(()=>switchPkg(map[id]),100);
+  }
+
+  // init
+  buildMDots();
+  updatePkgNav();
+</script>
+</body>
+</html>
