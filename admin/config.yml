@@ -1,0 +1,46 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Info"
+        file: "_data/settings.json"
+        fields:
+          - { label: "Hero Badge Text", name: "hero_badge", widget: "string", default: "Coming Soon to Staten Island" }
+          - { label: "Hero Description", name: "hero_desc", widget: "text" }
+          - { label: "Address Line 1", name: "address1", widget: "string" }
+          - { label: "Address Line 2", name: "address2", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Instagram Handle", name: "instagram", widget: "string" }
+
+  - name: "packages"
+    label: "Party Packages"
+    folder: "_packages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Package Name", name: "title", widget: "string" }
+      - { label: "Price", name: "price", widget: "string" }
+      - { label: "Duration", name: "duration", widget: "string" }
+      - { label: "Tag (e.g. All Ages / Kids Only)", name: "tag", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "What's Included", name: "includes", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+      - { label: "Notes", name: "notes", widget: "string", required: false }
+
+  - name: "tickets"
+    label: "Session Tickets"
+    folder: "_tickets"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Ticket Name", name: "title", widget: "string" }
+      - { label: "Price", name: "price", widget: "string" }
+      - { label: "Duration", name: "duration", widget: "string" }
+      - { label: "Features", name: "features", widget: "list", field: { label: "Feature", name: "feature", widget: "string" } }
